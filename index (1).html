@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ===================================================================
+     COMO USAR ESTE ARQUIVO (leia isto):
+     1. Troque tudo que estiver [ENTRE COLCHETES] pelos seus dados.
+     2. Os textos estao em INGLES de proposito (e o que recrutador
+        irlandes vai ler). Mantenha em ingles.
+     3. Para publicar no GitHub Pages, veja o passo a passo que te mandei
+        no chat. O arquivo PRECISA se chamar index.html.
+==================================================================== -->
+
+<title>Raul Rodrigues — AI Automation Developer</title>
+<meta name="description" content="Raul Rodrigues builds AI-powered automations and B2B web solutions. Based in Dublin." />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#0E1518;
+    --panel:#14201F;
+    --panel-2:#182726;
+    --signal:#F2A93B;
+    --wire:#3A5A57;
+    --wire-dim:#26403D;
+    --hi:#EAF0EC;
+    --lo:#8FA6A0;
+    --maxw:1080px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ink);
+    color:var(--hi);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* ---- utility label (mono) ---- */
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--signal);
+    display:inline-block;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:"// ";opacity:.6;}
+
+  /* ---- top bar ---- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(14,21,24,.72);
+    border-bottom:1px solid var(--wire-dim);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{
+    font-family:"IBM Plex Mono",monospace;
+    font-weight:500;font-size:.9rem;letter-spacing:.04em;color:var(--hi);
+    text-decoration:none;
+  }
+  .brand b{color:var(--signal);}
+  .nav-links{display:flex;gap:28px;}
+  .nav-links a{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.8rem;color:var(--lo);text-decoration:none;letter-spacing:.03em;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--hi);}
+  @media(max-width:640px){.nav-links{display:none;}}
+
+  /* ---- hero ---- */
+  .hero{padding:96px 0 40px;}
+  .hero h1{
+    font-family:"Archivo",sans-serif;
+    font-weight:900;
+    font-size:clamp(2.6rem,7vw,5rem);
+    line-height:.98;
+    letter-spacing:-.02em;
+    text-transform:uppercase;
+  }
+  .hero h1 .light{color:var(--lo);font-weight:600;}
+  .hero .lede{
+    max-width:560px;margin-top:26px;font-size:1.12rem;color:var(--lo);
+  }
+  .hero .lede strong{color:var(--hi);font-weight:600;}
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .btn{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:.85rem;letter-spacing:.03em;
+    padding:13px 22px;border-radius:2px;text-decoration:none;
+    display:inline-flex;align-items:center;gap:9px;transition:transform .15s,background .2s,border-color .2s;
+  }
+  .btn-primary{background:var(--signal);color:#1a1205;font-weight:500;}
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{border:1px solid var(--wire);color:var(--hi);}
+  .btn-ghost:hover{border-color:var(--signal);color:var(--signal);}
+
+  /* ---- pipeline (signature element) ---- */
+  .pipeline{margin:74px 0 20px;}
+  .pipeline-track{
+    display:flex;align-items:stretch;gap:0;position:relative;
+  }
+  .node{
+    flex:1;min-width:0;
+    background:var(--panel);
+    border:1px solid var(--wire-dim);
+    border-radius:3px;
+    padding:20px 18px;
+    position:relative;z-index:2;
+  }
+  .node .n-idx{
+    font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--signal);letter-spacing:.12em;
+  }
+  .node .n-name{
+    font-family:"Archivo",sans-serif;font-weight:700;font-size:1.05rem;margin-top:8px;letter-spacing:-.01em;
+  }
+  .node .n-sub{font-size:.82rem;color:var(--lo);margin-top:4px;}
+  .connector{
+    flex:0 0 40px;position:relative;align-self:center;height:2px;background:var(--wire-dim);z-index:1;
+    overflow:hidden;
+  }
+  .connector::after{
+    content:"";position:absolute;top:0;left:-40%;width:40%;height:100%;
+    background:linear-gradient(90deg,transparent,var(--signal),transparent);
+    animation:flow 2.6s linear infinite;
+  }
+  @keyframes flow{0%{left:-40%;}100%{left:100%;}}
+
+  @media(max-width:720px){
+    .pipeline-track{flex-direction:column;gap:0;}
+    .connector{flex:0 0 34px;width:2px;height:34px;align-self:flex-start;margin-left:34px;}
+    .connector::after{left:0;top:-40%;width:100%;height:40%;background:linear-gradient(180deg,transparent,var(--signal),transparent);animation:flowV 2.6s linear infinite;}
+    .node{width:100%;}
+  }
+  @keyframes flowV{0%{top:-40%;}100%{top:100%;}}
+
+  /* ---- sections ---- */
+  section{padding:70px 0;border-top:1px solid var(--wire-dim);scroll-margin-top:72px;}
+  .sec-head{margin-bottom:44px;}
+  .sec-head h2{
+    font-family:"Archivo",sans-serif;font-weight:800;
+    font-size:clamp(1.7rem,4vw,2.6rem);letter-spacing:-.02em;text-transform:uppercase;
+  }
+
+  /* ---- projects ---- */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  @media(max-width:720px){.grid{grid-template-columns:1fr;}}
+  .card{
+    background:var(--panel);border:1px solid var(--wire-dim);border-radius:3px;
+    padding:26px 24px;transition:border-color .25s,transform .25s;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{border-color:var(--wire);transform:translateY(-3px);}
+  .card .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--signal);
+  }
+  .card h3{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.25rem;margin:12px 0 10px;letter-spacing:-.01em;}
+  .card p{color:var(--lo);font-size:.95rem;flex:1;}
+  .stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;}
+  .chip{
+    font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--lo);
+    border:1px solid var(--wire-dim);border-radius:2px;padding:4px 9px;
+  }
+  .card a.link{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--signal);
+    text-decoration:none;margin-top:18px;display:inline-flex;gap:7px;align-items:center;
+  }
+  .card a.link:hover{gap:12px;}
+  .card a.link.muted{color:var(--lo);}
+
+  /* ---- about + skills ---- */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;}
+  @media(max-width:720px){.about-grid{grid-template-columns:1fr;gap:36px;}}
+  .about-grid p{color:var(--lo);font-size:1.05rem;margin-bottom:16px;}
+  .about-grid p strong{color:var(--hi);}
+  .skill-block{margin-bottom:24px;}
+  .skill-block .sk-label{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--signal);margin-bottom:12px;
+  }
+  .skill-list{display:flex;flex-wrap:wrap;gap:8px;}
+  .skill-list span{
+    font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--hi);
+    background:var(--panel);border:1px solid var(--wire-dim);border-radius:2px;padding:6px 11px;
+  }
+
+  /* ---- contact ---- */
+  .contact{text-align:center;}
+  .contact h2{
+    font-family:"Archivo",sans-serif;font-weight:900;
+    font-size:clamp(2rem,6vw,3.6rem);text-transform:uppercase;letter-spacing:-.02em;line-height:1;
+  }
+  .contact p{color:var(--lo);max-width:460px;margin:20px auto 34px;}
+  .contact-links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+
+  footer.foot{
+    border-top:1px solid var(--wire-dim);padding:28px 0;text-align:center;
+    font-family:"IBM Plex Mono",monospace;font-size:.75rem;color:var(--lo);letter-spacing:.04em;
+  }
+
+
+  button.link.toggle{background:none;border:none;cursor:pointer;padding:0;font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--signal);margin-top:18px;display:inline-flex;gap:7px;align-items:center;}
+  button.link.toggle:hover{gap:12px;}
+  .detail{margin-top:12px;border-left:2px solid var(--wire);padding:10px 14px;background:var(--panel-2);border-radius:2px;}
+  .detail p{color:var(--lo);font-size:.88rem;}
+  a:focus-visible,.btn:focus-visible{outline:2px solid var(--signal);outline-offset:3px;}
+
+  @media(prefers-reduced-motion:reduce){
+    .connector::after{animation:none;opacity:.5;left:0;top:0;}
+    *{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <!-- Troque o nome. Ex: joao<b>.dev</b> -->
+    <a class="brand" href="#top">raul<b>.dev</b></a>
+    <nav class="nav-links">
+      <a href="#work">work</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<div id="top" class="hero">
+  <div class="wrap">
+    <span class="eyebrow">AI automation engineer · Dublin, Ireland</span>
+    <!-- Troque pelo seu nome. A segunda linha pode ficar como esta. -->
+    <h1>Raul Rodrigues<br><span class="light">I build systems that run themselves.</span></h1>
+    <p class="lede">
+      I design <strong>AI-powered automations and data pipelines</strong> that
+      remove repetitive work — connecting apps, models and APIs so information
+      moves on its own. Open to part-time and graduate opportunities in Dublin.
+    </p>
+    <div class="cta-row">
+      <!-- Troque o link do CV e do email -->
+      <a class="btn btn-primary" href="#contact">Get in touch →</a>
+      <a class="btn btn-ghost" href="CV_Raul_Rodrigues.pdf">Download CV</a>
+    </div>
+
+    <!-- ===== SIGNATURE: automation pipeline ===== -->
+    <div class="pipeline" aria-label="How I work: a pipeline from data to outcome">
+      <div class="pipeline-track">
+        <div class="node">
+          <div class="n-idx">01 · INPUT</div>
+          <div class="n-name">Data &amp; Triggers</div>
+          <div class="n-sub">APIs, webhooks, files, forms</div>
+        </div>
+        <div class="connector"></div>
+        <div class="node">
+          <div class="n-idx">02 · LOGIC</div>
+          <div class="n-name">Automation</div>
+          <div class="n-sub">n8n · Make · Python</div>
+        </div>
+        <div class="connector"></div>
+        <div class="node">
+          <div class="n-idx">03 · MODEL</div>
+          <div class="n-name">AI Layer</div>
+          <div class="n-sub">LLMs, extraction, agents</div>
+        </div>
+        <div class="connector"></div>
+        <div class="node">
+          <div class="n-idx">04 · OUTPUT</div>
+          <div class="n-name">Delivered Value</div>
+          <div class="n-sub">CRM, sheets, reports, chat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Selected work</span>
+      <h2>Things I've automated</h2>
+    </div>
+
+    <!-- ===================================================
+         Troque os 4 projetos abaixo pelos seus.
+         Se ainda nao tem projeto real, use projetos pessoais
+         ou "cases" que voce montou para estudar. Recrutador
+         valoriza ver o problema -> a solucao -> o resultado.
+    ==================================================== -->
+    <div class="grid">
+
+      <article class="card">
+        <span class="tag">B2B · Web</span>
+        <h3>B2B websites with geolocation</h3>
+        <p>
+          Built B2B websites with geolocation features so businesses can reach,
+          filter and route customers by location — turning a plain site into a
+          lead-generation tool.
+        </p>
+        <div class="stack">
+          <span class="chip">Web</span><span class="chip">Geolocation</span><span class="chip">APIs</span>
+        </div>
+        <button class="link toggle" data-target="d1" aria-expanded="false">Details →</button>
+        <div class="detail" id="d1" hidden><p>Each site detects the visitor's location and adapts what it shows — nearest branch, service area, local contact. Built with map/geolocation APIs and connected to the client's lead capture flow.</p></div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Automation · AI</span>
+        <h3>AI automation for businesses</h3>
+        <p>
+          Designed AI-powered automations that remove repetitive manual work for
+          companies across marketing, legal, transport and dental sectors.
+        </p>
+        <div class="stack">
+          <span class="chip">LLM APIs</span><span class="chip">n8n / Make</span><span class="chip">Python</span>
+        </div>
+        <button class="link toggle" data-target="d2" aria-expanded="false">Details →</button>
+        <div class="detail" id="d2" hidden><p>Typical flow: a trigger (new message, form, file) → an AI step that reads and decides → an action (reply, update a system, notify a person). Each automation is tailored to how that business already works.</p></div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Integrations</span>
+        <h3>Workflow &amp; API integrations</h3>
+        <p>
+          Connected clients' tools and data sources so information flows between
+          systems automatically, cutting out manual copy-paste work.
+        </p>
+        <div class="stack">
+          <span class="chip">REST APIs</span><span class="chip">Webhooks</span><span class="chip">Automation</span>
+        </div>
+        <button class="link toggle" data-target="d3" aria-expanded="false">Details →</button>
+        <div class="detail" id="d3" hidden><p>Connected tools like CRMs, spreadsheets, chat apps and calendars through REST APIs and webhooks, so data entered once appears everywhere it's needed — no copy-paste.</p></div>
+      </article>
+
+      <article class="card">
+        <span class="tag">AI · Support</span>
+        <h3>AI customer-support assistant</h3>
+        <p>
+          An AI assistant that reads incoming messages, understands what the
+          customer needs and answers common questions automatically, passing the
+          rest to a human — cutting response time from hours to seconds.
+        </p>
+        <div class="stack">
+          <span class="chip">LLM API</span><span class="chip">n8n</span><span class="chip">Chat API</span>
+        </div>
+        <button class="link toggle" data-target="d4" aria-expanded="false">Details →</button>
+        <div class="detail" id="d4" hidden><p>The assistant classifies each incoming message by intent, answers FAQs instantly with an LLM, and hands unusual cases to a human with full context attached.</p></div>
+      </article>
+
+      <article class="card">
+        <span class="tag">AI · Documents</span>
+        <h3>Document data extraction</h3>
+        <p>
+          Reads PDFs and forms, extracts the important fields with AI, checks them
+          and writes clean data into a spreadsheet or system — removing manual
+          typing.
+        </p>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">OCR</span><span class="chip">LLM extraction</span>
+        </div>
+        <button class="link toggle" data-target="d5" aria-expanded="false">Details →</button>
+        <div class="detail" id="d5" hidden><p>Documents go in as PDFs or photos; OCR plus an LLM pull out the key fields (names, dates, values), validate them against rules, and write clean rows to a spreadsheet or system.</p></div>
+      </article>
+
+      <article class="card">
+        <span class="tag">AI · Reporting</span>
+        <h3>Automated AI reports</h3>
+        <p>
+          Pulls data from several tools on a schedule, asks an AI model to
+          summarise the key points in plain language and delivers a ready-to-read
+          report to the team automatically.
+        </p>
+        <div class="stack">
+          <span class="chip">Python</span><span class="chip">Scheduler</span><span class="chip">LLM API</span>
+        </div>
+        <button class="link toggle" data-target="d6" aria-expanded="false">Details →</button>
+        <div class="detail" id="d6" hidden><p>On a schedule, the pipeline collects data from the connected tools, asks an AI model for a plain-language summary of what changed, and delivers the report automatically.</p></div>
+      </article>
+
+    </div>
+
+      </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow">About</span>
+      <!-- Reescreva com a sua historia. Mantenha curto e honesto. -->
+      <p>
+        I'm a developer from Brazil focused on <strong>automation and applied
+        AI</strong>. Since 2025 I've built automations and B2B web solutions for
+        companies across marketing, legal, transport and dental sectors — earning
+        long-term trust through reliable delivery.
+      </p>
+      <p>
+        I recently moved to <strong>Dublin</strong> to study at SEDA College and
+        grow inside one of Europe's strongest tech ecosystems. I'm looking for
+        roles where I can keep building useful systems and learn from a great team.
+      </p>
+      <p>
+        Portuguese (native) · English (A2, currently studying).
+      </p>
+    </div>
+    <div>
+      <span class="eyebrow">Toolbox</span>
+      <div class="skill-block">
+        <div class="sk-label">Automation</div>
+        <div class="skill-list">
+          <span>n8n</span><span>Make</span><span>Zapier</span><span>Webhooks</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="sk-label">Code</div>
+        <div class="skill-list">
+          <span>Python</span><span>JavaScript</span><span>SQL</span><span>REST APIs</span>
+        </div>
+      </div>
+      <div class="skill-block">
+        <div class="sk-label">AI</div>
+        <div class="skill-list">
+          <span>LLM APIs</span><span>Prompt design</span><span>RAG</span><span>Agents</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="eyebrow">Let's talk</span>
+    <h2>Wire me in.</h2>
+    <p>Open to part-time and graduate roles in Dublin. The fastest way to reach me is email.</p>
+    <div class="contact-links">
+      <!-- Troque email, LinkedIn e GitHub -->
+      <a class="btn btn-primary" id="email-btn" href="mailto:raulbilu1982@gmail.com">raulbilu1982@gmail.com</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/raul-rodrigues-6744043b1">LinkedIn</a>
+      <!-- Reativar quando tiver o link: <a class="btn btn-ghost" href="https://github.com/SEU-USUARIO">GitHub</a> -->
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">© <span id="yr"></span> Raul Rodrigues — built &amp; deployed on GitHub Pages</div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+<script>
+  const emailBtn = document.getElementById('email-btn');
+  if (emailBtn) {
+    emailBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('raulbilu1982@gmail.com').then(() => {
+        const original = emailBtn.textContent;
+        emailBtn.textContent = 'Copied! \u2713';
+        setTimeout(() => { emailBtn.textContent = original; }, 1800);
+      }).catch(() => {});
+    });
+  }
+  document.querySelectorAll('.toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panel = document.getElementById(btn.dataset.target);
+      const open = !panel.hidden;
+      panel.hidden = open;
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.textContent = open ? 'Details →' : 'Close ✕';
+    });
+  });
+</script>
+</body>
+</html>
